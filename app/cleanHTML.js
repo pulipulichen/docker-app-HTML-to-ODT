@@ -66,7 +66,7 @@ module.exports = async function(inputFile) {
     item.attr('src', convertCachedURLToDirectURLPTTImagur(item.attr('src')))
 
     const dimensions = await getSizeOfImage(item.attr('src'))
-    console.log(item.attr('src'), dimensions)
+    // console.log(item.attr('src'), dimensions)
     // $(this).css('max-width', '70%');
     // item.attr('width', '50%')
 
@@ -77,7 +77,7 @@ module.exports = async function(inputFile) {
     // item.css('max-width', '14cm');
     // item.css('height', 'auto');
 
-    console.log(item.attr('src'), width, height)
+    // console.log(item.attr('src'), height, width)
   }
 
   // =================================================================
