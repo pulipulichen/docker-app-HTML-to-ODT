@@ -1,0 +1,11 @@
+version: "3"
+services:
+  app:
+    build: .
+    tty: true
+    # command: node /app/svg-to-png.js "/input/資組.zip"
+    command: pandoc --standalone --embed-resources=true /app/input2.html -o /app/output.docx
+    volumes: 
+      - ./app:/app/
+      - ./cache:/cache/
+      - .:/input/
