@@ -61,14 +61,14 @@ module.exports = async function(inputFile) {
 
   $('svg').remove();
 
-  console.log('underline', $('*[style*="text-decoration-line: underline"]').length)
-  $('*[style*="text-decoration-line: underline"]').each(function() {
+  // console.log('underline', $('*[style*="text-decoration-line: underline"]').length)
+  $('*[style*="text-decoration-line: underline"],*[style*="text-decoration-line:underline"]').each(function() {
     console.log(this.text())
     $(this).wrapInner('<u></u>');
   });
 
-  console.log('bold', $('*[style*="font-weight: bold"]').length)
-  $('*[style*="font-weight: bold"]').each(function() {
+  // console.log('bold', $('*[style*="font-weight: bold"]').length)
+  $('*[style*="font-weight: bold"],*[style*="font-weight:bold"]').each(function() {
     console.log(this.text())
     $(this).wrapInner('<b></b>');
   });
