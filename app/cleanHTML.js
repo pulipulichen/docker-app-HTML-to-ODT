@@ -64,6 +64,10 @@ module.exports = async function(inputFile) {
     let item = list.eq(i);
 
     let src = item.attr('src')
+    if (src.startsWith('data:')) {
+      continue
+    }
+
     if (src.startsWith('//')) {
       src = 'https:' + src
     }
