@@ -16,7 +16,8 @@ module.exports = function(inputFile) {
   $('h1.blogger-title').remove();
 
   $('img').each(function () {
-    $(this).css('max-width', '70%');
+    // $(this).css('max-width', '70%');
+    $(this).attr('width', '50%')
   });
 
   // =================================================================
