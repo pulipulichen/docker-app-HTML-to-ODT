@@ -59,6 +59,8 @@ module.exports = async function(inputFile) {
   // Remove h1 elements with class 'blogger-title'
   $('h1.blogger-title').remove();
 
+  $('svg').remove();
+
   list = $('img')
   for (let i = 0; i < list.length; i++) {
     let item = list.eq(i);
