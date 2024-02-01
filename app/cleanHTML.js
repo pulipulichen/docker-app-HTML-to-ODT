@@ -18,7 +18,11 @@ module.exports = function(inputFile) {
   $('img').each(function () {
     // $(this).css('max-width', '70%');
     $(this).attr('width', '50%')
+
+    $(this).css('width', '50%')
+    $(this).css('max-width', '14cm')
     $(this).css('height', 'auto')
+    $(this).css('max-height', '28cm')
   });
 
   // =================================================================
