@@ -76,6 +76,8 @@ module.exports = async function(inputFile) {
     item.attr('height', height)
     // item.css('max-width', '14cm');
     // item.css('height', 'auto');
+
+    console.log(item.attr('src'), width, height)
   }
 
   // =================================================================
