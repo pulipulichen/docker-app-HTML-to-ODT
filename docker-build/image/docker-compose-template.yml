@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    image: pudding/docker-app:docker-app-html-to-docx-app-20240201.165036
+    image: pudding/docker-app:docker-app-html-to-docx-app-20240201.165237
     tty: true
     volumes: 
       - "__SOURCE_INPUT__:/opt/app/input/"
