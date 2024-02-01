@@ -20,6 +20,30 @@ function convertCachedURLToDirectURLPTTImagur(cachedURL) {
   return cachedURL; // Return the original URL if no match is found
 }
 
+function resizeImage(width, height) {
+  const maxWidth = 400;
+  const maxHeight = 600;
+
+  // Calculate the new dimensions while preserving the aspect ratio
+  let newWidth = width;
+  let newHeight = height;
+
+  if (newWidth > maxWidth) {
+    newWidth = maxWidth;
+    newHeight = (height * maxWidth) / width;
+  }
+
+  if (newHeight > maxHeight) {
+    newHeight = maxHeight;
+    newWidth = (width * maxHeight) / height;
+  }
+
+  return {
+    width: Math.round(newWidth),
+    height: Math.round(newHeight),
+  };
+}
+
 module.exports = async function(inputFile) {
   const outputFile = '/tmp/temp.html';
 
@@ -46,10 +70,12 @@ module.exports = async function(inputFile) {
     // $(this).css('max-width', '70%');
     // item.attr('width', '50%')
 
-    item.attr('width', dimensions.width)
-    item.attr('height', dimensions.height)
-    item.css('max-width', '14cm');
-    item.css('height', 'auto');
+    let {width, height} = resizeImage(dimensions.width, dimensions.height)
+
+    item.attr('width', width)
+    item.attr('height', height)
+    // item.css('max-width', '14cm');
+    // item.css('height', 'auto');
   }
 
   // =================================================================
