@@ -65,6 +65,7 @@ module.exports = async function(inputFile) {
 
     let src = item.attr('src')
     if (src.startsWith('data:')) {
+      item.attr('width', '50%')
       continue
     }
 
