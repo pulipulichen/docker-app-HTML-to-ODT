@@ -39,10 +39,13 @@ module.exports = function(inputFile) {
     $(this).css('max-height', '28cm')
   });
 
+
   // =================================================================
 
   // Get the modified HTML content
   const modifiedHtml = $.html();
+
+  console.log(modifiedHtml);
 
       // Write the modified HTML content to the output file
   fs.writeFileSync(outputFile, modifiedHtml, 'utf8');
