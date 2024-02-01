@@ -2,7 +2,7 @@ const ShellSpawn = require('./lib/ShellSpawn')
 const ShellExec = require('./lib/ShellExec')
 const GetFiles = require('./lib/GetFiles')
 
-const HTMLtoDOCX = require('html-to-docx');
+// const HTMLtoDOCX = require('html-to-docx');
 
 const path = require('path')
 const fs = require('fs')
