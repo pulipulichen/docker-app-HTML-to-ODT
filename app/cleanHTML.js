@@ -3,11 +3,15 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 function convertCachedURLToDirectURL(cachedURL) {
-  const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
-  const match = cachedURL.match(regex);
+  // const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
+  // const match = cachedURL.match(regex);
   
-  if (match && match.length >= 2) {
-    return match[1];
+  // if (match && match.length >= 2) {
+  //   return match[1];
+  // }
+  if (cachedURL.startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
+    cachedURL = cachedURL.slice(cachedURL.lastIndexOf('/') + 1, cachedURL.indexOf('?'))
+    cachedURL = 'https://i.imgur.com/' + cachedURL
   }
   
   return cachedURL; // Return the original URL if no match is found
