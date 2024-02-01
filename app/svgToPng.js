@@ -2,11 +2,13 @@ const sharp = require('sharp');
 
 module.exports = function ($) {
   // Find all SVG elements in the HTML
+  console.log($('svg').length)
+
   $('svg').each(function () {
     // Convert each SVG to PNG
     const svgElement = $(this);
     const svgString = $.html(this);
-
+    console.log(svgString);
     // Replace the SVG with a PNG image
     sharp(Buffer.from(svgString))
       .png()
@@ -23,4 +25,5 @@ module.exports = function ($) {
         console.error('Error converting SVG to PNG:', error);
       });
   });
+
 }

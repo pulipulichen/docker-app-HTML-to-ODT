@@ -56,6 +56,7 @@ module.exports = async function(inputFile) {
   // =================================================================
 
   svgToPng($)
+  throw Error($('svg').length)
 
   let list 
 
@@ -93,7 +94,7 @@ module.exports = async function(inputFile) {
   // Get the modified HTML content
   const modifiedHtml = $.html();
 
-  // console.log(modifiedHtml);
+  console.log(modifiedHtml);
 
       // Write the modified HTML content to the output file
   fs.writeFileSync(outputFile, modifiedHtml, 'utf8');
