@@ -61,6 +61,14 @@ module.exports = async function(inputFile) {
 
   $('svg').remove();
 
+  $('*[style*="text-decoration-line: underline"]').each(function() {
+    $(this).wrapInner('<u></u>');
+  });
+
+  $('*[style*="font-weight: bold"]').each(function() {
+    $(this).wrapInner('<b></b>');
+  });
+
   list = $('img')
   for (let i = 0; i < list.length; i++) {
     let item = list.eq(i);
