@@ -5,5 +5,5 @@ services:
     tty: true
     command: pandoc --standalone --embed-resources=true /app/input2.html -o /app/output.docx
     volumes: 
-      - ./app:/opt/app/
-      - .:/opt/input/
+      - ./app:/app/
+      - ./input:/input/
