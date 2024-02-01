@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=docker-app-HTML-to-DOCX
+PROJECT_NAME=docker-app-HTML-to-ODT
 
 # =================================================================
 

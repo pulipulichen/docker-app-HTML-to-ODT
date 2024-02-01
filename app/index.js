@@ -32,8 +32,7 @@ let main = async function () {
     // pandoc --standalone --embed-resources --metadata pagetitle="title" index.md -o index-out.html
     // await ShellExec(`pandoc --standalone --embed-resources --metadata pagetitle="${filenameNoExt}" "${file}" -o "${path.resolve(dirname, filenameNoExt + '.docx')}"`)
     
-    await ShellExec(`pandoc --standalone --embed-resources --standalone "${tmpFile}" -o "${path.resolve(dirname, filenameNoExt + '.docx')}"`)
-    // await ShellExec(`pandoc --standalone --embed-resources --standalone "${tmpFile}" -o "${path.resolve(dirname, filenameNoExt + '.odt')}"`)
+    await ShellExec(`pandoc --standalone --embed-resources --standalone "${tmpFile}" -o "${path.resolve(dirname, filenameNoExt + '.odt')}"`)
   }
 }
 

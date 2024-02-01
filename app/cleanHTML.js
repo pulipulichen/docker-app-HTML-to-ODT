@@ -10,8 +10,16 @@ module.exports = function(inputFile) {
   // Load the HTML content into Cheerio
   const $ = cheerio.load(data);
 
+  // =================================================================
+
   // Remove h1 elements with class 'blogger-title'
   $('h1.blogger-title').remove();
+
+  $('img').each(function () {
+    $(this).css('max-width', '70%');
+  });
+
+  // =================================================================
 
   // Get the modified HTML content
   const modifiedHtml = $.html();

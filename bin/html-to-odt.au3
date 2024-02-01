@@ -1,7 +1,7 @@
 #include <MsgBoxConstants.au3>
 #include <FileConstants.au3>
 
-Global $sPROJECT_NAME = "docker-app-HTML-to-DOCX"
+Global $sPROJECT_NAME = "docker-app-HTML-to-ODT"
 
 ; =================================================================
 
