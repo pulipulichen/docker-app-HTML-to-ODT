@@ -27,7 +27,7 @@ module.exports = function(inputFile) {
   $('h1.blogger-title').remove();
 
   $('img').each(function () {
-    console.log(this.src)
+    console.log($(this).attr('src'))
     if ($(this).attr('src') && $(this).attr('src').startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
       $(this).attr('src', convertCachedURLToDirectURL($(this).attr('src')))
     }
