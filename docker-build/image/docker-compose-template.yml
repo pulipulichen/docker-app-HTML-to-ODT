@@ -3,6 +3,7 @@ services:
   app:
     image: pudding/docker-app:docker-app-html-to-docx-app-20240201.165826
     tty: true
+    command: node /app/index.js "/input/__INPUT__"
     volumes: 
       - "__SOURCE_INPUT__:/input/"
       - "__SOURCE_APP__:/app/"
