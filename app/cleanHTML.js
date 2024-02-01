@@ -62,10 +62,12 @@ module.exports = async function(inputFile) {
   $('svg').remove();
 
   $('*[style*="text-decoration-line: underline"]').each(function() {
+    console.log(this.text())
     $(this).wrapInner('<u></u>');
   });
 
   $('*[style*="font-weight: bold"]').each(function() {
+    console.log(this.text())
     $(this).wrapInner('<b></b>');
   });
 
