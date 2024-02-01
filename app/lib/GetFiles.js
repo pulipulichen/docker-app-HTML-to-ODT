@@ -10,13 +10,15 @@ function GetFiles() {
     try {
       const dockerAPPDirectoryPath = '/input/.docker-app';
       
-      let stats = fs.statSync(dockerAPPDirectoryPath)
-        
-      if (stats.isDirectory()) {
-        console.log(`${dockerAPPDirectoryPath} is a directory.`);
-        files = getFilesInInput()
-      } else {
-        console.log(`${dockerAPPDirectoryPath} is not a directory.`);
+      if (fs.existsSync(dockerAPPDirectoryPath)) {
+        let stats = fs.statSync(dockerAPPDirectoryPath)
+          
+        if (stats.isDirectory()) {
+          console.log(`${dockerAPPDirectoryPath} is a directory.`);
+          files = getFilesInInput()
+        } else {
+          console.log(`${dockerAPPDirectoryPath} is not a directory.`);
+        }
       }
     }
     catch (e) {
