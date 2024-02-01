@@ -44,7 +44,11 @@ module.exports = async function(inputFile) {
     const dimensions = await getSizeOfImage(item.attr('src'))
     console.log(item.attr('src'), dimensions)
     // $(this).css('max-width', '70%');
-    item.attr('width', '50%')
+    // item.attr('width', '50%')
+
+    item.attr('width', dimensions.width)
+    item.attr('height', dimensions.height)
+    item.css('max-width', '50%');
   }
 
   // =================================================================
