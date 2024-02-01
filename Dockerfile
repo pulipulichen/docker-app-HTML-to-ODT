@@ -9,3 +9,8 @@ RUN apt-get install -y /pandoc-3.1.11.1-1-amd64.deb
 RUN rm -rf /pandoc-3.1.11.1-1-amd64.deb
 
 CMD ["node", "/app/index.js"]
+
+COPY ./package.json /package.json
+WORKDIR /
+RUN npm i
+
