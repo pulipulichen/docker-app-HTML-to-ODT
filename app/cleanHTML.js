@@ -73,9 +73,11 @@ module.exports = async function(inputFile) {
     $(this).wrapInner('<b></b>');
   });
 
+  console.log('color', $('span[style*="color:"]').length)
   $('span[style*="color:"]').each(function() {
     // console.log(this.text())
     const currentColor = $(this).css('color'); // Get the current color
+    console.log(currentColor)
     $(this).wrap(`<font color="${currentColor}"></font>`); // Wrap with <font> tag with color attribute
   });
 
