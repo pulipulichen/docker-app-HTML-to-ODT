@@ -7,4 +7,5 @@ services:
     volumes: 
       - "__SOURCE_INPUT__:/input/"
       - "__SOURCE_APP__:/app/"
+      - __SOURCE__:/output/
     # restart: on-failure
