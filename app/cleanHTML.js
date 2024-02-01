@@ -68,9 +68,9 @@ module.exports = async function(inputFile) {
       src = 'https:' + src
     }
 
-    item.attr('src', convertCachedURLToDirectURLPTTImagur(item.attr('src')))
+    item.attr('src', convertCachedURLToDirectURLPTTImagur(src))
 
-    const dimensions = await getSizeOfImage(item.attr('src'))
+    const dimensions = await getSizeOfImage(src)
     // console.log(item.attr('src'), dimensions)
     // $(this).css('max-width', '70%');
     // item.attr('width', '50%')
