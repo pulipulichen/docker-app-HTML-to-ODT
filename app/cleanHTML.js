@@ -27,7 +27,7 @@ module.exports = function(inputFile) {
   $('h1.blogger-title').remove();
 
   $('img').each(function () {
-    if (this.src.startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
+    if (this.src && this.src.startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
       this.src = convertCachedURLToDirectURL(this.src)
     }
     // $(this).css('max-width', '70%');
