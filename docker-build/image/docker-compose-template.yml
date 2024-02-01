@@ -4,6 +4,6 @@ services:
     image: pudding/docker-app:docker-app-html-to-docx-app-20240201.165411
     tty: true
     volumes: 
-      - "__SOURCE_INPUT__:/opt/app/input/"
+      - "__SOURCE_INPUT__:/opt/input/"
       - "__SOURCE_APP__:/opt/app/"
     # restart: on-failure
