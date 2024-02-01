@@ -5,7 +5,7 @@ services:
     tty: true
     command: node /app/index.js "/input/__INPUT__"
     volumes: 
-      - "__SOURCE_INPUT__:/input/"
       - "__SOURCE_APP__:/app/"
+      - "__SOURCE_INPUT__:/input/"
       - __SOURCE__:/output/
     # restart: on-failure
