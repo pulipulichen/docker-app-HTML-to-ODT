@@ -2,6 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
+function convertCachedURLToDirectURL(cachedURL) {
+  const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
+  const match = cachedURL.match(regex);
+  
+  if (match && match.length >= 2) {
+    return match[1];
+  }
+  
+  return cachedURL; // Return the original URL if no match is found
+}
+
 module.exports = function(inputFile) {
   const outputFile = '/tmp/temp.html';
 
@@ -16,6 +27,9 @@ module.exports = function(inputFile) {
   $('h1.blogger-title').remove();
 
   $('img').each(function () {
+    if (this.src.startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
+      this.src = convertCachedURLToDirectURL(this.src)
+    }
     // $(this).css('max-width', '70%');
     $(this).attr('width', '50%')
 
