@@ -3,8 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const getSizeOfImage = require('./getSizeOfImage')
-const svgToPng = require('./svgToPng')
-
+// const svgToPng = require('./getSizeOfImage')
 
 function convertCachedURLToDirectURLPTTImagur(cachedURL) {
   // const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
@@ -55,9 +54,6 @@ module.exports = async function(inputFile) {
 
   // =================================================================
 
-  svgToPng($)
-  // throw Error($('svg').length)
-
   let list 
 
   // Remove h1 elements with class 'blogger-title'
@@ -94,7 +90,7 @@ module.exports = async function(inputFile) {
   // Get the modified HTML content
   const modifiedHtml = $.html();
 
-  console.log(modifiedHtml);
+  // console.log(modifiedHtml);
 
       // Write the modified HTML content to the output file
   fs.writeFileSync(outputFile, modifiedHtml, 'utf8');
