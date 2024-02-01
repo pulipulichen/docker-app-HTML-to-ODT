@@ -8,5 +8,4 @@ COPY ./docker-build/pandoc-3.1.11.1-1-amd64.deb /pandoc-3.1.11.1-1-amd64.deb
 RUN apt-get install -y /pandoc-3.1.11.1-1-amd64.deb
 RUN rm -rf /pandoc-3.1.11.1-1-amd64.deb
 
-CMD ["node", "/opt/app/index.js"]
-RUN mkdir -p /opt/app/input/
+CMD ["node", "/app/index.js"]
