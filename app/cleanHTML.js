@@ -63,6 +63,11 @@ module.exports = async function(inputFile) {
   for (let i = 0; i < list.length; i++) {
     let item = list.eq(i);
 
+    let src = item.attr('src')
+    if (src.startsWith('//')) {
+      src = 'https:' + src
+    }
+
     item.attr('src', convertCachedURLToDirectURLPTTImagur(item.attr('src')))
 
     const dimensions = await getSizeOfImage(item.attr('src'))
