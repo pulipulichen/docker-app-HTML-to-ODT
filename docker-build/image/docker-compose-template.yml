@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    image: pudding/docker-app:docker-app-html-to-odt-app-20240201.233216
+    image: pudding/docker-app:docker-app-html-to-odt-app-20240202.040927
     tty: true
     command: node /app/index.js "/input/__INPUT__"
     environment:

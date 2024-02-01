@@ -2,6 +2,8 @@ const ShellSpawn = require('./lib/ShellSpawn')
 const ShellExec = require('./lib/ShellExec')
 const GetFiles = require('./lib/GetFiles')
 
+const HTMLtoDOCX = require('html-to-docx');
+
 const path = require('path')
 const fs = require('fs')
 
@@ -32,11 +34,28 @@ let main = async function () {
     // pandoc --standalone --embed-resources --metadata pagetitle="title" index.md -o index-out.html
     // await ShellExec(`pandoc --standalone --embed-resources --metadata pagetitle="${filenameNoExt}" "${file}" -o "${path.resolve(dirname, filenameNoExt + '.docx')}"`)
     
-    // await ShellExec(`pandoc --standalone --embed-resources --standalone "${tmpFile}" -o "${path.resolve(dirname, filenameNoExt + '.odt')}"`)
+    await ShellExec(`pandoc --standalone --embed-resources --standalone "${tmpFile}" -o "${path.resolve(dirname, filenameNoExt + '.odt')}"`)
 
-    const htmlContent = fs.readFileSync(tmpFile, 'utf-8');
-    const docxBuffer = htmlToDocx(htmlContent);
-    fs.writeFileSync(`${path.resolve(dirname, filenameNoExt + '.odt')}`, docxBuffer);
+
+    
+  //   const htmlContent = fs.readFileSync(tmpFile, 'utf-8');
+  //   // const docxBuffer = htmlToDocx(htmlContent);
+  //   // fs.writeFileSync(`${path.resolve(dirname, filenameNoExt + '.odt')}`, docxBuffer);
+
+  //   const fileBuffer = await HTMLtoDOCX(htmlContent, null, {
+  //     table: { row: { cantSplit: true } },
+  //     footer: false,
+  //     pageNumber: true,
+  //   });
+  
+  //   fs.writeFile(`${path.resolve('/input/', filenameNoExt + '.docx')}`, fileBuffer, (error) => {
+  //     if (error) {
+  //       console.log('Docx file creation failed');
+  //       console.error(error);
+  //       return;
+  //     }
+  //     console.log('Docx file created successfully');
+  //   });
   }
 }
 
