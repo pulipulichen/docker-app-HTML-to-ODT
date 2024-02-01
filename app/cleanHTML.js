@@ -48,7 +48,8 @@ module.exports = async function(inputFile) {
 
     item.attr('width', dimensions.width)
     item.attr('height', dimensions.height)
-    item.css('max-width', '50%');
+    item.css('max-width', '14cm');
+    item.css('height', 'auto');
   }
 
   // =================================================================
