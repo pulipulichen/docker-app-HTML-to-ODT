@@ -7,15 +7,20 @@ function GetFiles() {
   
   if (files.length === 0) {
     // 可能是colab模式
-    const dockerAPPDirectoryPath = '/input/.docker-app';
-    
-    let stats = fs.statSync(dockerAPPDirectoryPath)
+    try {
+      const dockerAPPDirectoryPath = '/input/.docker-app';
       
-    if (stats.isDirectory()) {
-      console.log(`${dockerAPPDirectoryPath} is a directory.`);
-      files = getFilesInInput()
-    } else {
-      console.log(`${dockerAPPDirectoryPath} is not a directory.`);
+      let stats = fs.statSync(dockerAPPDirectoryPath)
+        
+      if (stats.isDirectory()) {
+        console.log(`${dockerAPPDirectoryPath} is a directory.`);
+        files = getFilesInInput()
+      } else {
+        console.log(`${dockerAPPDirectoryPath} is not a directory.`);
+      }
+    }
+    catch (e) {
+      console.error(e)
     }
   }
 
