@@ -62,7 +62,7 @@ module.exports = async function(inputFile) {
   $('svg').remove();
 
   // console.log('underline', $('*[style*="text-decoration-line: underline"]').length)
-  $('*[style*="text-decoration-line: underline"],*[style*="text-decoration-line:underline"]').each(function() {
+  $('*[style*="text-decoration-line: underline"],*[style*="text-decoration:underline"]').each(function() {
     // console.log(this.text())
     $(this).wrapInner('<u></u>');
   });
@@ -71,6 +71,12 @@ module.exports = async function(inputFile) {
   $('*[style*="font-weight: bold"],*[style*="font-weight:bold"]').each(function() {
     // console.log(this.text())
     $(this).wrapInner('<b></b>');
+  });
+
+  $('span[style*="color:"]').each(function() {
+    // console.log(this.text())
+    const currentColor = $(this).css('color'); // Get the current color
+    $(this).wrap(`<font color="${currentColor}"></font>`); // Wrap with <font> tag with color attribute
   });
 
   list = $('img')
