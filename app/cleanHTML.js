@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
+const getSizeOfImage = require('./getSizeOfImage')
+
+
 function convertCachedURLToDirectURLPTTImagur(cachedURL) {
   // const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
   // const match = cachedURL.match(regex);
@@ -17,7 +20,7 @@ function convertCachedURLToDirectURLPTTImagur(cachedURL) {
   return cachedURL; // Return the original URL if no match is found
 }
 
-module.exports = function(inputFile) {
+module.exports = async function(inputFile) {
   const outputFile = '/tmp/temp.html';
 
   // Read the HTML file
@@ -27,32 +30,29 @@ module.exports = function(inputFile) {
 
   // =================================================================
 
+  let list 
+
   // Remove h1 elements with class 'blogger-title'
   $('h1.blogger-title').remove();
 
-  $('img').each(function () {
-    // console.log($(this).attr('src'), $(this).prop('src'), convertCachedURLToDirectURL($(this).attr('src')))
-    // if ($(this).attr('src') && $(this).attr('src').startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
-    //   $(this).prop('src', convertCachedURLToDirectURL($(this).attr('src')))
-    // }
+  list = $('img')
+  for (let i = 0; i < list.length; i++) {
+    let item = list[i];
 
-    $(this).attr('src', convertCachedURLToDirectURLPTTImagur($(this).attr('src')))
+    item.attr('src', convertCachedURLToDirectURLPTTImagur($(this).attr('src')))
+
+    const dimensions = await getSizeOfImage(item.attr('src'))
+    console.log(item.attr('src'), dimensions)
     // $(this).css('max-width', '70%');
-    $(this).attr('width', '50%')
-
-    // $(this).css('width', '50%')
-    // $(this).css('max-width', '14cm')
-    // $(this).css('height', 'auto')
-    // $(this).css('max-height', '28cm')
-  });
-
+    item.attr('width', '50%')
+  }
 
   // =================================================================
 
   // Get the modified HTML content
   const modifiedHtml = $.html();
 
-  console.log(modifiedHtml);
+  // console.log(modifiedHtml);
 
       // Write the modified HTML content to the output file
   fs.writeFileSync(outputFile, modifiedHtml, 'utf8');
