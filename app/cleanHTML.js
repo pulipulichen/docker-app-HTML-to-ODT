@@ -2,14 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
-function convertCachedURLToDirectURL(cachedURL) {
+function convertCachedURLToDirectURLPTTImagur(cachedURL) {
   // const regex = /https:\/\/cache\.ptt\.cc\/c\/(https:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.png)/;
   // const match = cachedURL.match(regex);
   
   // if (match && match.length >= 2) {
   //   return match[1];
   // }
-  if (cachedURL.startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
+  if (cachedURL.startsWith('https://cache.ptt.cc/c/https/i.imgur.com/')) {
     cachedURL = cachedURL.slice(cachedURL.lastIndexOf('/') + 1, cachedURL.indexOf('?'))
     cachedURL = 'https://i.imgur.com/' + cachedURL
   }
@@ -31,10 +31,12 @@ module.exports = function(inputFile) {
   $('h1.blogger-title').remove();
 
   $('img').each(function () {
-    console.log($(this).attr('src'), $(this).prop('src'), convertCachedURLToDirectURL($(this).attr('src')))
-    if ($(this).attr('src') && $(this).attr('src').startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
-      $(this).prop('src', convertCachedURLToDirectURL($(this).attr('src')))
-    }
+    // console.log($(this).attr('src'), $(this).prop('src'), convertCachedURLToDirectURL($(this).attr('src')))
+    // if ($(this).attr('src') && $(this).attr('src').startsWith('https://cache.ptt.cc/c/https://i.imgur.com/')) {
+    //   $(this).prop('src', convertCachedURLToDirectURL($(this).attr('src')))
+    // }
+
+    $(this).attr('src', convertCachedURLToDirectURLPTTImagur($(this).attr('src')))
     // $(this).css('max-width', '70%');
     $(this).attr('width', '50%')
 
