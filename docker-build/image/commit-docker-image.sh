@@ -28,7 +28,10 @@ desired_part=${part_after_colon##*/}
 # Removing the date part (assuming the format is always like -YYYYMMDD.HHMMSS)
 CONTAINER_NAME=${desired_part%-*}
 
-docker tag ${CONTAINER_NAME} ${IMAGE_NAME}
+echo $CONTAINER_NAME
+echo $IMAGE_NAME
+
+docker tag ${CONTAINER_NAME} ${IMAGE_NAME} || exit 0
 docker push "${IMAGE_NAME}"
 
 # =========
