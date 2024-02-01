@@ -3,6 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const getSizeOfImage = require('./getSizeOfImage')
+const svgToPng = require('./svgToPng')
 
 
 function convertCachedURLToDirectURLPTTImagur(cachedURL) {
@@ -53,6 +54,8 @@ module.exports = async function(inputFile) {
   const $ = cheerio.load(data);
 
   // =================================================================
+
+  svgToPng($)
 
   let list 
 
