@@ -4,8 +4,11 @@ services:
     image: pudding/docker-app:docker-app-html-to-docx-app-20240201.165826
     tty: true
     command: node /app/index.js "/input/__INPUT__"
+    environment:
+      - LOCAL_VOLUMN_PATH=/input/
+      - RUN_COMMAND=node /app/index.js
     volumes: 
-      - "__SOURCE_APP__:/app/"
-      - "__SOURCE_INPUT__:/input/"
+      - ./app:/app/
+      - __SOURCE__:/input/
       - __SOURCE__:/output/
     # restart: on-failure
