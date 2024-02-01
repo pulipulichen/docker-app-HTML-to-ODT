@@ -78,7 +78,7 @@ module.exports = async function(inputFile) {
     // console.log(this.text())
     const currentColor = $(this).css('color'); // Get the current color
     console.log(currentColor)
-    $(this).wrap(`<font color="${currentColor}"></font>`); // Wrap with <font> tag with color attribute
+    $(this).wrap(`<font color="#F00"></font>`); // Wrap with <font> tag with color attribute
   });
 
   list = $('img')
