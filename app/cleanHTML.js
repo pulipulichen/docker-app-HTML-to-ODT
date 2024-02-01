@@ -37,7 +37,7 @@ module.exports = async function(inputFile) {
 
   list = $('img')
   for (let i = 0; i < list.length; i++) {
-    let item = list[i];
+    let item = list.eq(i);
 
     item.attr('src', convertCachedURLToDirectURLPTTImagur($(this).attr('src')))
 
