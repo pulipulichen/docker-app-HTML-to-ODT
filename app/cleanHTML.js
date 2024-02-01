@@ -56,7 +56,7 @@ module.exports = async function(inputFile) {
   // =================================================================
 
   svgToPng($)
-  throw Error($('svg').length)
+  // throw Error($('svg').length)
 
   let list 
 
